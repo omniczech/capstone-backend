@@ -1,13 +1,13 @@
 #!/bin/bash
 
-curl "http://localhost:4741/lists" \
+curl "http://localhost:4741/examples" \
   --include \
   --request POST \
   --header "Content-Type: application/json" \
   --header "Authorization: Token token=${TOKEN}" \
   --data '{
-    "list": {
-      "title": "'"${TITLE}"'"
+    "example": {
+      "text": "'"${TEXT}"'"
     }
   }'
 
