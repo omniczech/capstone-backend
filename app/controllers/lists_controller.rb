@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class ListsController < OpenReadController
+class ListsController < ProtectedController
   before_action :set_list, only: %i[update destroy]
 
   # GET /lists

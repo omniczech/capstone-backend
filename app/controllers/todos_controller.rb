@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class TodosController < OpenReadController
+class TodosController < ProtectedController
   before_action :set_todo, only: %i[update destroy]
 
   # GET /todos
