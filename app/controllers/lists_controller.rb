@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class ListsController < ProtectedController
+class ListsController < OpenReadController # ProtectedController
   before_action :set_list, only: %i[update destroy]
 
   # GET /lists
@@ -12,7 +12,7 @@ class ListsController < ProtectedController
 
   # GET /lists/1
   def show
-    render json: @list
+    render json: List.find(params[:id])
   end
 
   # POST /lists
@@ -48,6 +48,6 @@ class ListsController < ProtectedController
 
     # Only allow a trusted parameter "white list" through.
     def list_params
-      params.require(:list).permit(:title, :user_id)
+      params.require(:list).permit(:title, :user_id, :todos)
     end
 end

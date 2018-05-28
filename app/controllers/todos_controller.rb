@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class TodosController < ProtectedController
+class TodosController < OpenReadController
   before_action :set_todo, only: %i[update destroy]
 
   # GET /todos
@@ -12,7 +12,7 @@ class TodosController < ProtectedController
 
   # GET /todos/1
   def show
-    render json: @todo
+    render json: Todo.find(params[:id])
   end
 
   # POST /todos
@@ -28,8 +28,10 @@ class TodosController < ProtectedController
 
   # PATCH/PUT /todos/1
   def update
+    @todo = Todo.find(params[:id])
+
     if @todo.update(todo_params)
-      render json: @todo
+      head :no_content
     else
       render json: @todo.errors, status: :unprocessable_entity
     end
