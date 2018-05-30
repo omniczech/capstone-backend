@@ -2,4 +2,8 @@
 
 class UserSerializer < ActiveModel::Serializer
   attributes :id, :email
+  has_many :lists
+  def lists
+    object.lists.pluck(:id)
+  end
 end

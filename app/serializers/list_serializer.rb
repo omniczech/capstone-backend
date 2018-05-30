@@ -3,4 +3,8 @@ class ListSerializer < ActiveModel::Serializer
   def todos
     object.todos.pluck(:id)
   end
+  has_one :user
+  def user
+    object.user.id
+  end
 end
