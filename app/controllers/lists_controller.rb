@@ -48,6 +48,6 @@ class ListsController < OpenReadController # ProtectedController
 
     # Only allow a trusted parameter "white list" through.
     def list_params
-      params.require(:list).permit(:title, :user_id, :todos)
+      params.require(:list).permit(:title, :todos)
     end
 end
